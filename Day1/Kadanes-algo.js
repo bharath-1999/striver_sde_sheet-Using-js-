@@ -1,5 +1,5 @@
 //space:O(1),time: O(n)
-//leetcode_link:https://leetcode.com/problems/maximum-subarray/
+//leetcode-link:https://leetcode.com/problems/maximum-subarray/
 
 
 /**
