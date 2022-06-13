@@ -1,5 +1,5 @@
 //space:O(1),time-complexity:O(n);
-//Leetcode link:https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+//Leetcode-link:https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
 /**
  * @param {number[]} prices
