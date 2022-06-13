@@ -1,5 +1,5 @@
 //space:o(1),Time-complexity:O(n)
-//Leetcode-link:https://leetcode.com/problems/next-permutation/
+//Leetcode link:https://leetcode.com/problems/next-permutation/
 
 /**
  * @param {number[]} nums
