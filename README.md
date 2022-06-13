@@ -1,4 +1,4 @@
-# striver_sde_sheet-Using-js-
+# striver_sde_sheet-Using-JS-
 # Popular dsa sheet named Striver sde sheet solved in Java Script
 
 I am going to solve Striver sheet every day.
