@@ -1,0 +1,68 @@
+//question-link:https://www.interviewbit.com/problems/repeat-and-missing-number-array/
+
+
+//approach-1 using basic mathematics formulaes 
+module.exports = { 
+ //param A : array of integers
+ //return a array of integers
+	repeatedNumber : function(A){
+            var sum1=0;   //a-b
+            var sum2=0;  //a^2 -b^2
+            for(let i=0;i<A.length;i++){
+                sum1+=A[i]-(i+1);
+                sum2+=A[i]*A[i]-(i+1)*(i+1);
+            }
+            sum2=Math.round(sum2/sum1) ;    //a+b=(a^2-b^2)/(a-b);
+            var rep=Math.round((sum1+sum2)/2);
+            var missing=sum2-rep;
+            return([rep,missing]);
+	}
+};
+
+//approach-2 using xor,most optimal
+module.exports = { 
+ //param A : array of integers
+ //return a array of integers
+	repeatedNumber : function(A){
+          var xy=0;
+         for(let i=0;i<A.length;i++){
+             xy=xy^A[i]^(i+1);
+         }    
+         var p=0;
+         var temp=xy;
+         //finding setbit from right;
+         while(temp>0){
+             if(temp&1==1){
+                 break;
+             }
+             temp=temp>>1;
+             p++;
+         }
+         var mask=(1<<p);
+         var buck1=0,buck2=0;
+         for(let i=0;i<A.length;i++){
+             if((A[i]&mask)===0){
+                 buck1=buck1^A[i];
+             }
+             else{
+                 buck2=buck2^A[i];
+             }
+             if(((i+1)&mask)===0){
+                 buck1=buck1^(i+1);
+             }
+             else {
+                 buck2=buck2^(i+1);
+             }
+         }
+         var cnt=0;
+         for(let i=0;i<A.length;i++){
+             if(buck1===A[i])
+             cnt++;
+         }
+         if(cnt==0)
+         return([buck2,buck1])
+         
+         return([buck1,buck2]);
+         
+	}
+};
