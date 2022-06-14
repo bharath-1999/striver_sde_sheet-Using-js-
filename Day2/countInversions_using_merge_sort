@@ -1,0 +1,61 @@
+//time:O(nlongn) 
+//gfg question link:https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1#
+
+
+
+
+//User function Template for javascript
+
+/**
+ * @param {number[]} arr
+ * @param {number} N
+ * @returns {number}
+*/
+
+class Solution {
+    // Function to count inversions in the array.
+    merge(i,mid,j,arr){
+        var left=[],right=[];
+        for(let k=i;k<=mid;k++)
+        left.push(arr[k]);
+        for(let k=mid+1;k<=j;k++)
+        right.push(arr[k]);
+        var index=i;
+        var l=0,r=0;
+        var invcount=0;
+        while(l<left.length&&r<right.length){
+            if(left[l]<=right[r]){
+                arr[index++]=left[l++];
+                
+            }
+            else{
+                arr[index]=right[r];
+                index++;
+                r++;
+                invcount+=left.length-l;
+            }
+        }
+        while(l<left.length){
+             arr[index++]=left[l++];
+        }
+        while(r<right.length){
+              arr[index++]=right[r++];
+        }
+        return(invcount);
+    }
+    mergefun(i,j,arr){
+        if(i<j){
+            let mid=Math.floor((i+j)/2);
+            let left=this.mergefun(i,mid,arr);
+            let right=this.mergefun(mid+1,j,arr);
+            let combined=this.merge(i,mid,j,arr);
+            return(left+right+combined);
+        }
+        return(0);
+    }
+    inversionCount(arr, N)
+    {
+        //your code here
+        return this.mergefun(0,N-1,arr);
+    }
+}
